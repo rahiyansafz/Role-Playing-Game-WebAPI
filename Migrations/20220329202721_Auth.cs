@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace WebApiJumpStart.Migrations
 {
-    public partial class UserCharacter : Migration
+    public partial class Auth : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

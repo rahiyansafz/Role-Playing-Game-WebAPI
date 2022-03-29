@@ -18,6 +18,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddScoped<ICharacterService, CharacterService>();
+builder.Services.AddScoped<IAuthRepository, AuthRepository>();
 
 var app = builder.Build();
 

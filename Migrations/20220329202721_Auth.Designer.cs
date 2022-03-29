@@ -12,8 +12,8 @@ using WebApiJumpStart.Data;
 namespace WebApiJumpStart.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20220329184456_UserCharacter")]
-    partial class UserCharacter
+    [Migration("20220329202721_Auth")]
+    partial class Auth
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

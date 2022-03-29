@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WebApiJumpStart.Models;
 
@@ -23,6 +24,7 @@ public class Character
 
     public RpgClass Class { get; set; } = RpgClass.Ironman;
 
+    [ForeignKey("UserId")]
     public Guid UserId { get; set; }
-    public User User { get; set; } = null!;
+    public User User { get; set; }
 }
