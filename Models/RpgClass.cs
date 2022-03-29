@@ -1,11 +1,10 @@
-﻿namespace WebApiJumpStart.Models
+﻿namespace WebApiJumpStart.Models;
+
+public enum RpgClass
 {
-    public enum RpgClass
-    {
-        Batman = 1,
+    Batman = 1,
 
-        Ironman = 2,
+    Ironman = 2,
 
-        Daredevil = 3
-    }
+    Daredevil = 3
 }

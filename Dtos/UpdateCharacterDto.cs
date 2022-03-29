@@ -1,21 +1,20 @@
 ﻿using WebApiJumpStart.Models;
 
-namespace WebApiJumpStart.Dtos
+namespace WebApiJumpStart.Dtos;
+
+public class UpdateCharacterDto
 {
-    public class UpdateCharacterDto
-    {
-        public Guid Id { get; set; }
+    public Guid Id { get; set; }
 
-        public string Name { get; set; } = "Hinayana";
+    public string Name { get; set; } = "Hinayana";
 
-        public int HitPoints { get; set; } = 100;
+    public int HitPoints { get; set; } = 100;
 
-        public int Strength { get; set; } = 10;
+    public int Strength { get; set; } = 10;
 
-        public int Defense { get; set; } = 10;
+    public int Defense { get; set; } = 10;
 
-        public int Intelligence { get; set; } = 10;
+    public int Intelligence { get; set; } = 10;
 
-        public RpgClass Class { get; set; } = RpgClass.Batman;
-    }
+    public RpgClass Class { get; set; } = RpgClass.Batman;
 }
