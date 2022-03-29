@@ -24,7 +24,6 @@ public class Character
 
     public RpgClass Class { get; set; } = RpgClass.Ironman;
 
-    [ForeignKey("UserId")]
-    public Guid UserId { get; set; }
+    public int UserId { get; set; }
     public User User { get; set; }
 }
