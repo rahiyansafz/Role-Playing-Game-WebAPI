@@ -2,9 +2,9 @@
 
 public enum RpgClass
 {
-    Batman = 1,
+    Wizard = 1,
 
-    Ironman = 2,
+    Archer = 2,
 
-    Daredevil = 3
+    Knight = 3
 }

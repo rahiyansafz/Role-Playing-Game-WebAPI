@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WebApiJumpStart.Models;
 
@@ -22,7 +21,7 @@ public class Character
 
     public int Intelligence { get; set; } = 10;
 
-    public RpgClass Class { get; set; } = RpgClass.Ironman;
+    public RpgClass Class { get; set; } = RpgClass.Wizard;
 
     public int UserId { get; set; }
     public User User { get; set; }
