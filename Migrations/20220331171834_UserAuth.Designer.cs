@@ -12,8 +12,8 @@ using WebApiJumpStart.Data;
 namespace WebApiJumpStart.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20220329202721_Auth")]
-    partial class Auth
+    [Migration("20220331171834_UserAuth")]
+    partial class UserAuth
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -52,8 +52,8 @@ namespace WebApiJumpStart.Migrations
                     b.Property<int>("Strength")
                         .HasColumnType("int");
 
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -64,9 +64,11 @@ namespace WebApiJumpStart.Migrations
 
             modelBuilder.Entity("WebApiJumpStart.Models.User", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<byte[]>("PasswordHash")
                         .IsRequired()
