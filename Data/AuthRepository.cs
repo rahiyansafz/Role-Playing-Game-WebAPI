@@ -20,7 +20,7 @@ public class AuthRepository : IAuthRepository
     public async Task<ServiceResponse<int>> Register(User user, string password)
     {
         ServiceResponse<int> response = new();
-        if(await UserExists(user.Username))
+        if (await UserExists(user.Username))
         {
             response.Success = false;
             response.Message = "User already exists!";
@@ -35,14 +35,13 @@ public class AuthRepository : IAuthRepository
         await _context.Users.AddAsync(user);
         await _context.SaveChangesAsync();
 
-
         response.Data = user.Id;
         return response;
     }
 
     public async Task<bool> UserExists(string username)
     {
-       if(await _context.Users.AnyAsync(x => x.Username.ToLower() == username.ToLower()))
+        if (await _context.Users.AnyAsync(x => x.Username.ToLower() == username.ToLower()))
         {
             return true;
         }
@@ -52,7 +51,7 @@ public class AuthRepository : IAuthRepository
 
     private void CreatePasswordHash(string password, out byte[] passwordHash, out byte[] passwordSalt)
     {
-        using(var hmac = new System.Security.Cryptography.HMACSHA512())
+        using (var hmac = new System.Security.Cryptography.HMACSHA512())
         {
             passwordSalt = hmac.Key;
             passwordHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));

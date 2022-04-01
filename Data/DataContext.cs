@@ -13,6 +13,5 @@ namespace WebApiJumpStart.Data
         public DbSet<Character> Characters { get; set; } = null!;
 
         public DbSet<User> Users { get; set; } = null!;
-
     }
 }
