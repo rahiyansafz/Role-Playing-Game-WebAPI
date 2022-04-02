@@ -104,6 +104,10 @@ public class AuthRepository : IAuthRepository
             new Claim(ClaimTypes.NameIdentifier, user.Username)
         };
 
+        //SymmetricSecurityKey key = new SymmetricSecurityKey(
+        //    Encoding.UTF8.GetBytes(_configuration.GetSection("AppSettings:Token").Value)
+        //);
+
         SymmetricSecurityKey key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["AppSettings:Token"]));
 
         SigningCredentials creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
