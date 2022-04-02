@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using WebApiJumpStart.Dtos;
 using WebApiJumpStart.Models;
 using WebApiJumpStart.Services;
 
 namespace WebApiJumpStart.Controllers;
 
+[Authorize]
 [Route("api/[controller]")]
 [ApiController]
 public class CharacterController : ControllerBase
@@ -16,6 +18,7 @@ public class CharacterController : ControllerBase
         _characterService = characterService;
     }
 
+    //[AllowAnonymous]
     //[HttpGet("GetCharacters")]
     [HttpGet(Name = "GetCharacters")]
     public async Task<ActionResult> Get()
