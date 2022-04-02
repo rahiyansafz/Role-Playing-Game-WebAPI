@@ -1,4 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
 using WebApiJumpStart.Models;
 
 namespace WebApiJumpStart.Data;
@@ -6,10 +10,12 @@ namespace WebApiJumpStart.Data;
 public class AuthRepository : IAuthRepository
 {
     private readonly DataContext _context;
+    private readonly IConfiguration _configuration;
 
-    public AuthRepository(DataContext context)
+    public AuthRepository(DataContext context, IConfiguration configuration)
     {
         _context = context;
+        _configuration = configuration;
     }
 
     public async Task<ServiceResponse<string>> Login(string username, string password)
@@ -28,7 +34,7 @@ public class AuthRepository : IAuthRepository
         }
         else
         {
-            response.Data = user.Id.ToString();
+            response.Data = CreateToken(user);
         }
 
         return response;
@@ -89,5 +95,30 @@ public class AuthRepository : IAuthRepository
             }
             return true;
         }
+    }
+
+    private string CreateToken(User user)
+    {
+        List<Claim> claims = new List<Claim> {
+            new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
+            new Claim(ClaimTypes.NameIdentifier, user.Username)
+        };
+
+        SymmetricSecurityKey key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["AppSettings:Token"]));
+
+        SigningCredentials creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
+
+        SecurityTokenDescriptor tokenDescriptor = new SecurityTokenDescriptor
+        {
+            Subject = new ClaimsIdentity(claims),
+            Expires = DateTime.Now.AddDays(1),
+            SigningCredentials = creds
+        };
+
+        JwtSecurityTokenHandler tokenHandler = new();
+        SecurityToken token = tokenHandler.CreateToken(tokenDescriptor);
+
+        return tokenHandler.WriteToken(token);
+
     }
 }
