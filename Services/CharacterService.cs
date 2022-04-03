@@ -43,10 +43,10 @@ public class CharacterService : ICharacterService
         return serviceResponse;
     }
 
-    public async Task<ServiceResponse<IEnumerable<GetCharacterDto>>> GetAllCharacters()
+    public async Task<ServiceResponse<IEnumerable<GetCharacterDto>>> GetAllCharacters(int userId)
     {
         ServiceResponse<IEnumerable<GetCharacterDto>> serviceResponse = new();
-        IEnumerable<Character> dbCharacters = await _context.Characters!.ToListAsync();
+        IEnumerable<Character> dbCharacters = await _context.Characters!.Where(c=>c.User.Id == userId).ToListAsync();
         serviceResponse.Data = (dbCharacters.Select(c => _mapper.Map<GetCharacterDto>(c))).ToList();
         serviceResponse.Count = dbCharacters.Count();
         serviceResponse.Type = "Character";

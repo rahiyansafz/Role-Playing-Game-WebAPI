@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 using WebApiJumpStart.Dtos;
 using WebApiJumpStart.Models;
 using WebApiJumpStart.Services;
@@ -18,12 +19,13 @@ public class CharacterController : ControllerBase
         _characterService = characterService;
     }
 
-    //[AllowAnonymous]
+    [AllowAnonymous]
     //[HttpGet("GetCharacters")]
     [HttpGet(Name = "GetCharacters")]
     public async Task<ActionResult> Get()
     {
-        return Ok(await _characterService.GetAllCharacters());
+        int userId = int.Parse(User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)!.Value);
+        return Ok(await _characterService.GetAllCharacters(userId));
     }
 
     [HttpGet("{id}")]
