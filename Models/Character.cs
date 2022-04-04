@@ -24,5 +24,5 @@ public class Character
     public RpgClass Class { get; set; } = RpgClass.Wizard;
 
     public int UserId { get; set; }
-    public User User { get; set; }
+    public User User { get; set; } = null!;
 }
