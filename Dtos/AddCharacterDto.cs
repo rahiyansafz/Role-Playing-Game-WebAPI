@@ -17,4 +17,7 @@ public class AddCharacterDto
     public RpgClass Class { get; set; } = RpgClass.Wizard;
 
     public int UserId { get; set; }
+
+    //public int WeaponId { get; set; }
+
 }

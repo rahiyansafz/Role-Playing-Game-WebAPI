@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using RPGWebAPI.Models;
 using WebApiJumpStart.Models;
 
 namespace WebApiJumpStart.Data
@@ -13,5 +14,6 @@ namespace WebApiJumpStart.Data
         public DbSet<Character> Characters { get; set; } = null!;
 
         public DbSet<User> Users { get; set; } = null!;
+        public DbSet<Weapon> Weapons { get; set; } = null!;
     }
 }

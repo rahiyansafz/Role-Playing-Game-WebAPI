@@ -8,7 +8,7 @@ using WebApiJumpStart.Data;
 
 #nullable disable
 
-namespace WebApiJumpStart.Migrations
+namespace RPGWebAPI.Migrations
 {
     [DbContext(typeof(DataContext))]
     partial class DataContextModelSnapshot : ModelSnapshot
@@ -21,6 +21,32 @@ namespace WebApiJumpStart.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
+
+            modelBuilder.Entity("RPGWebAPI.Models.Weapon", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<Guid>("CharacterId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("Damage")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CharacterId")
+                        .IsUnique();
+
+                    b.ToTable("Weapons");
+                });
 
             modelBuilder.Entity("WebApiJumpStart.Models.Character", b =>
                 {
@@ -85,6 +111,17 @@ namespace WebApiJumpStart.Migrations
                     b.ToTable("Users");
                 });
 
+            modelBuilder.Entity("RPGWebAPI.Models.Weapon", b =>
+                {
+                    b.HasOne("WebApiJumpStart.Models.Character", "Character")
+                        .WithOne("Weapon")
+                        .HasForeignKey("RPGWebAPI.Models.Weapon", "CharacterId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Character");
+                });
+
             modelBuilder.Entity("WebApiJumpStart.Models.Character", b =>
                 {
                     b.HasOne("WebApiJumpStart.Models.User", "User")
@@ -94,6 +131,12 @@ namespace WebApiJumpStart.Migrations
                         .IsRequired();
 
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("WebApiJumpStart.Models.Character", b =>
+                {
+                    b.Navigation("Weapon")
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("WebApiJumpStart.Models.User", b =>
