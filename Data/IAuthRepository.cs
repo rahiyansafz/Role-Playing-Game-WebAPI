@@ -1,6 +1,6 @@
-﻿using WebApiJumpStart.Models;
+﻿using RPGWebAPI.Models;
 
-namespace WebApiJumpStart.Data;
+namespace RPGWebAPI.Data;
 
 public interface IAuthRepository
 {

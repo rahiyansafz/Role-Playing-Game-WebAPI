@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using WebApiJumpStart.Data;
-using WebApiJumpStart.Dtos.User;
-using WebApiJumpStart.Models;
+using RPGWebAPI.Data;
+using RPGWebAPI.Dtos.User;
+using RPGWebAPI.Models;
 
-namespace WebApiJumpStart.Controllers;
+namespace RPGWebAPI.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]

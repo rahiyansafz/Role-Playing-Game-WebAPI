@@ -1,11 +1,11 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
-using WebApiJumpStart.Dtos;
-using WebApiJumpStart.Models;
-using WebApiJumpStart.Services;
+using RPGWebAPI.Dtos;
+using RPGWebAPI.Models;
+using RPGWebAPI.Services;
 
-namespace WebApiJumpStart.Controllers;
+namespace RPGWebAPI.Controllers;
 
 [Authorize]
 [Route("api/[controller]")]

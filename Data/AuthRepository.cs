@@ -3,9 +3,9 @@ using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
-using WebApiJumpStart.Models;
+using RPGWebAPI.Models;
 
-namespace WebApiJumpStart.Data;
+namespace RPGWebAPI.Data;
 
 public class AuthRepository : IAuthRepository
 {

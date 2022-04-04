@@ -1,4 +1,4 @@
-﻿namespace WebApiJumpStart.Models;
+﻿namespace RPGWebAPI.Models;
 
 public enum RpgClass
 {

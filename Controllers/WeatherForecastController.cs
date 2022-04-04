@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace WebApiJumpStart.Controllers;
+namespace RPGWebAPI.Controllers;
 
 [ApiController]
 [Route("[controller]")]

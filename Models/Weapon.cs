@@ -1,6 +1,4 @@
-﻿using WebApiJumpStart.Models;
-
-namespace RPGWebAPI.Models;
+﻿namespace RPGWebAPI.Models;
 
 public class Weapon
 {

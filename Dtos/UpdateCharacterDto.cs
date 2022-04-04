@@ -1,7 +1,6 @@
 ﻿using RPGWebAPI.Models;
-using WebApiJumpStart.Models;
 
-namespace WebApiJumpStart.Dtos;
+namespace RPGWebAPI.Dtos;
 
 public class UpdateCharacterDto
 {

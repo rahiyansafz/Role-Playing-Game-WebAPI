@@ -1,4 +1,4 @@
-﻿namespace WebApiJumpStart.Dtos.User;
+﻿namespace RPGWebAPI.Dtos.User;
 
 public class UserLoginDto
 {

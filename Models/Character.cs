@@ -1,7 +1,7 @@
 ﻿using RPGWebAPI.Models;
 using System.ComponentModel.DataAnnotations;
 
-namespace WebApiJumpStart.Models;
+namespace RPGWebAPI.Models;
 
 public class Character
 {

@@ -4,8 +4,8 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.Filters;
 using System.Text;
-using WebApiJumpStart.Data;
-using WebApiJumpStart.Services;
+using RPGWebAPI.Data;
+using RPGWebAPI.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 

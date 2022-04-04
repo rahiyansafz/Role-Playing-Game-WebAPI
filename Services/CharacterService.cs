@@ -1,11 +1,11 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
-using WebApiJumpStart.Data;
-using WebApiJumpStart.Dtos;
-using WebApiJumpStart.Models;
+using RPGWebAPI.Data;
+using RPGWebAPI.Dtos;
+using RPGWebAPI.Models;
 
-namespace WebApiJumpStart.Services;
+namespace RPGWebAPI.Services;
 
 public class CharacterService : ICharacterService
 {

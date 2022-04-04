@@ -1,7 +1,7 @@
-﻿using WebApiJumpStart.Dtos;
-using WebApiJumpStart.Models;
+﻿using RPGWebAPI.Dtos;
+using RPGWebAPI.Models;
 
-namespace WebApiJumpStart.Services;
+namespace RPGWebAPI.Services;
 
 public interface ICharacterService
 {

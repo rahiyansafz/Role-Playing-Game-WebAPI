@@ -1,15 +1,14 @@
 ﻿using AutoMapper;
-using WebApiJumpStart.Dtos;
-using WebApiJumpStart.Models;
+using RPGWebAPI.Dtos;
+using RPGWebAPI.Models;
 
-namespace WebApiJumpStart
+namespace RPGWebAPI;
+
+public class AutoMapperProfile : Profile
 {
-    public class AutoMapperProfile : Profile
+    public AutoMapperProfile()
     {
-        public AutoMapperProfile()
-        {
-            CreateMap<Character, GetCharacterDto>();
-            CreateMap<AddCharacterDto, Character>();
-        }
+        CreateMap<Character, GetCharacterDto>();
+        CreateMap<AddCharacterDto, Character>();
     }
 }
