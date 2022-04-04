@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace RPGWebAPI.Migrations
 {
-    public partial class WeaponAdd : Migration
+    public partial class WeaponDb : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

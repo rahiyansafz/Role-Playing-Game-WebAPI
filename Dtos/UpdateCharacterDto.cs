@@ -1,4 +1,5 @@
-﻿using WebApiJumpStart.Models;
+﻿using RPGWebAPI.Models;
+using WebApiJumpStart.Models;
 
 namespace WebApiJumpStart.Dtos;
 
@@ -21,5 +22,6 @@ public class UpdateCharacterDto
     public int UserId { get; set; }
 
     //public int WeaponId { get; set; }
+    public Weapon Weapon { get; set; } = null!;
 
 }

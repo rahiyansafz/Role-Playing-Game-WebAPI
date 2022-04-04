@@ -12,8 +12,8 @@ using WebApiJumpStart.Data;
 namespace RPGWebAPI.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20220404182726_WeaponAdd")]
-    partial class WeaponAdd
+    [Migration("20220404190013_WeaponDb")]
+    partial class WeaponDb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
