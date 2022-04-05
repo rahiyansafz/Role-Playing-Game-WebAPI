@@ -26,7 +26,6 @@ public class Character
     public int UserId { get; set; }
     public User User { get; set; } = null!;
 
-    //public int WeaponId { get; set; }
     public Weapon Weapon { get; set; } = null!;
-
+    public List<CharacterSkill> CharacterSkills { get; set; } = null!;
 }
