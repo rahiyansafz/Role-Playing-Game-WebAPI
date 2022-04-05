@@ -2,8 +2,10 @@
 
 namespace RPGWebAPI.Dtos;
 
-public class AddCharacterDto
+public class UpdateCharacterDto
 {
+    public Guid Id { get; set; }
+
     public string Name { get; set; } = "Hinayana";
 
     public int HitPoints { get; set; } = 100;
@@ -18,7 +20,7 @@ public class AddCharacterDto
 
     public int UserId { get; set; }
 
-    //public int WeaponId { get; set; } 
-    public Weapon Weapon { get; set; } = null!;
+    //public int WeaponId { get; set; }
+    //public Weapon Weapon { get; set; } = null!;
 
 }

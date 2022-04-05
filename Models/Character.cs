@@ -1,5 +1,4 @@
-﻿using RPGWebAPI.Models;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace RPGWebAPI.Models;
 

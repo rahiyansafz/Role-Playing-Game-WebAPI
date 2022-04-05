@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System.Security.Claims;
 using RPGWebAPI.Dtos;
 using RPGWebAPI.Models;
 using RPGWebAPI.Services;

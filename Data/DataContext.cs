@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using RPGWebAPI.Models;
-using RPGWebAPI.Models;
 
 namespace RPGWebAPI.Data;
 

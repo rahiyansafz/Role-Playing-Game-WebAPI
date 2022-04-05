@@ -1,4 +1,5 @@
-﻿using RPGWebAPI.Models;
+﻿using RPGWebAPI.Dtos.Weapon;
+using RPGWebAPI.Models;
 
 namespace RPGWebAPI.Dtos;
 
@@ -23,6 +24,6 @@ public class GetCharacterDto
     public int UserId { get; set; }
 
     //public int WeaponId { get; set; }
-    public Weapon Weapon { get; set; } = null!;
+    public GetWeaponDto Weapon { get; set; } = null!;
 
 }
