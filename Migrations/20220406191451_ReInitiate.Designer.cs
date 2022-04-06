@@ -12,8 +12,8 @@ using RPGWebAPI.Data;
 namespace RPGWebAPI.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20220406130733_FightProperties")]
-    partial class FightProperties
+    [Migration("20220406191451_ReInitiate")]
+    partial class ReInitiate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

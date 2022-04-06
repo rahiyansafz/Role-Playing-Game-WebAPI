@@ -5,10 +5,24 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace RPGWebAPI.Migrations
 {
-    public partial class WeaponDb : Migration
+    public partial class ReInitiate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "Skills",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Damage = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Skills", x => x.Id);
+                });
+
             migrationBuilder.CreateTable(
                 name: "Users",
                 columns: table => new
@@ -36,7 +50,10 @@ namespace RPGWebAPI.Migrations
                     Defense = table.Column<int>(type: "int", nullable: false),
                     Intelligence = table.Column<int>(type: "int", nullable: false),
                     Class = table.Column<int>(type: "int", nullable: false),
-                    UserId = table.Column<int>(type: "int", nullable: false)
+                    UserId = table.Column<int>(type: "int", nullable: false),
+                    Fights = table.Column<int>(type: "int", nullable: false),
+                    Victories = table.Column<int>(type: "int", nullable: false),
+                    Defeats = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -45,6 +62,30 @@ namespace RPGWebAPI.Migrations
                         name: "FK_Characters_Users_UserId",
                         column: x => x.UserId,
                         principalTable: "Users",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "CharacterSkills",
+                columns: table => new
+                {
+                    CharacterId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    SkillId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CharacterSkills", x => new { x.CharacterId, x.SkillId });
+                    table.ForeignKey(
+                        name: "FK_CharacterSkills_Characters_CharacterId",
+                        column: x => x.CharacterId,
+                        principalTable: "Characters",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_CharacterSkills_Skills_SkillId",
+                        column: x => x.SkillId,
+                        principalTable: "Skills",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -76,6 +117,11 @@ namespace RPGWebAPI.Migrations
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_CharacterSkills_SkillId",
+                table: "CharacterSkills",
+                column: "SkillId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Weapons_CharacterId",
                 table: "Weapons",
                 column: "CharacterId",
@@ -85,7 +131,13 @@ namespace RPGWebAPI.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "CharacterSkills");
+
+            migrationBuilder.DropTable(
                 name: "Weapons");
+
+            migrationBuilder.DropTable(
+                name: "Skills");
 
             migrationBuilder.DropTable(
                 name: "Characters");

@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using RPGWebAPI.Dtos;
+using RPGWebAPI.Dtos.Fight;
 using RPGWebAPI.Dtos.Skill;
 using RPGWebAPI.Dtos.Weapon;
 using RPGWebAPI.Models;
@@ -14,5 +15,6 @@ public class AutoMapperProfile : Profile
         CreateMap<AddCharacterDto, Character>();
         CreateMap<Weapon, GetWeaponDto>();
         CreateMap<Skill, GetSkillDto>();
+        CreateMap<Character, HighscoreDto>();
     }
 }
