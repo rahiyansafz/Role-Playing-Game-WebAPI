@@ -8,6 +8,7 @@ using RPGWebAPI.Data;
 using RPGWebAPI.Services;
 using RPGWebAPI.Services.WeaponService;
 using RPGWebAPI.Services.CharacterSkillService;
+using RPGWebAPI.Services.FightService;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -37,6 +38,7 @@ builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddScoped<ICharacterService, CharacterService>();
 builder.Services.AddScoped<IWeaponService, WeaponService>();
 builder.Services.AddScoped<ICharacterSkillService, CharacterSkillService>();
+builder.Services.AddScoped<IFightService, FightService>();
 builder.Services.AddScoped<IAuthRepository, AuthRepository>();
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>

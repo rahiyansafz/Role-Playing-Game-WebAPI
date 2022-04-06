@@ -27,5 +27,8 @@ public class GetCharacterDto
     //public int WeaponId { get; set; }
     public GetWeaponDto Weapon { get; set; } = null!;
     public List<GetSkillDto> Skills { get; set; } = null!;
+    public int Fights { get; set; }
+    public int Victories { get; set; }
+    public int Defeats { get; set; }
 
 }
