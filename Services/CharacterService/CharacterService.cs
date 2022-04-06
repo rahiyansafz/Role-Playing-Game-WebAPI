@@ -21,6 +21,7 @@ public class CharacterService : ICharacterService
     }
 
     private int GetUserId() => int.Parse(_httpContextAccessor.HttpContext!.User.FindFirstValue(ClaimTypes.NameIdentifier));
+    private string GetUserRole() => _httpContextAccessor.HttpContext!.User.FindFirstValue(ClaimTypes.Role);
 
     public async Task<ServiceResponse<IEnumerable<GetCharacterDto>>> AddCharacter(AddCharacterDto character)
     {
@@ -52,7 +53,7 @@ public class CharacterService : ICharacterService
     public async Task<ServiceResponse<IEnumerable<GetCharacterDto>>> GetAllCharacters()
     {
         ServiceResponse<IEnumerable<GetCharacterDto>> serviceResponse = new();
-        IEnumerable<Character> dbCharacters = await _context.Characters!.Where(c => c.User!.Id == GetUserId()).ToListAsync();
+        IEnumerable<Character> dbCharacters = GetUserRole().Equals("Admin") ? await _context.Characters.ToListAsync() : await _context.Characters!.Where(c => c.User!.Id == GetUserId()).ToListAsync();
         serviceResponse.Data = (dbCharacters.Select(c => _mapper.Map<GetCharacterDto>(c))).ToList();
         serviceResponse.Count = dbCharacters.Count();
         serviceResponse.Type = "Character";

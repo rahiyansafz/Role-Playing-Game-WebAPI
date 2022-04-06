@@ -18,6 +18,10 @@ public class DataContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<CharacterSkill>().HasKey(cs=> new { cs.CharacterId, cs.SkillId });
+        modelBuilder.Entity<CharacterSkill>().HasKey(cs => new { cs.CharacterId, cs.SkillId });
+
+        modelBuilder.Entity<User>().Property(user => user.Role).HasDefaultValue("Player");
+
     }
+
 }

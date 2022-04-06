@@ -1,4 +1,6 @@
-﻿namespace RPGWebAPI.Models;
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace RPGWebAPI.Models;
 
 public class User
 {
@@ -8,4 +10,6 @@ public class User
     public byte[] PasswordSalt { get; set; }
 
     public List<Character>? Characters { get; set; }
+    [Required]
+    public string Role { get; set; } = null!;
 }
