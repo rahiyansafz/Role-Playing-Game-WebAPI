@@ -28,4 +28,7 @@ public class Character
 
     public Weapon Weapon { get; set; } = null!;
     public List<CharacterSkill> CharacterSkills { get; set; } = null!;
+    public int Fights { get; set; }
+    public int Victories { get; set; }
+    public int Defeats { get; set; }
 }
