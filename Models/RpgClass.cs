@@ -2,9 +2,9 @@
 
 public enum RpgClass
 {
-    Wizard = 1,
+    Knight = 1,
+    
+    Mage = 2,
 
-    Archer = 2,
-
-    Knight = 3
+    Cleric = 3
 }
