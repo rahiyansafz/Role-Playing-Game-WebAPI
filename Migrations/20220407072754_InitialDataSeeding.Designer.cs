@@ -12,8 +12,8 @@ using RPGWebAPI.Data;
 namespace RPGWebAPI.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20220406191451_ReInitiate")]
-    partial class ReInitiate
+    [Migration("20220407072754_InitialDataSeeding")]
+    partial class InitialDataSeeding
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -69,6 +69,38 @@ namespace RPGWebAPI.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Characters");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("6f2f59d9-44b5-4b84-9e64-c6f1ec295d0a"),
+                            Class = 1,
+                            Defeats = 0,
+                            Defense = 10,
+                            Fights = 0,
+                            HitPoints = 100,
+                            Intelligence = 10,
+                            Name = "Frodo",
+                            PublishedAt = new DateTime(2022, 4, 7, 13, 27, 54, 379, DateTimeKind.Local).AddTicks(4318),
+                            Strength = 15,
+                            UserId = 1,
+                            Victories = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("1bc19437-5989-4ac6-a07b-d058fbf45648"),
+                            Class = 2,
+                            Defeats = 0,
+                            Defense = 5,
+                            Fights = 0,
+                            HitPoints = 100,
+                            Intelligence = 20,
+                            Name = "Raistlin",
+                            PublishedAt = new DateTime(2022, 4, 7, 13, 27, 54, 379, DateTimeKind.Local).AddTicks(4356),
+                            Strength = 5,
+                            UserId = 2,
+                            Victories = 0
+                        });
                 });
 
             modelBuilder.Entity("RPGWebAPI.Models.CharacterSkill", b =>
@@ -84,6 +116,23 @@ namespace RPGWebAPI.Migrations
                     b.HasIndex("SkillId");
 
                     b.ToTable("CharacterSkills");
+
+                    b.HasData(
+                        new
+                        {
+                            CharacterId = new Guid("a1b7697d-3a1a-45e3-8d8e-6447cb1a8b19"),
+                            SkillId = 2
+                        },
+                        new
+                        {
+                            CharacterId = new Guid("5355c1a8-bb0c-49f1-bc2c-b8c8ce2539f9"),
+                            SkillId = 1
+                        },
+                        new
+                        {
+                            CharacterId = new Guid("d2d33062-e77b-4b10-8b8c-44e20ef44b93"),
+                            SkillId = 3
+                        });
                 });
 
             modelBuilder.Entity("RPGWebAPI.Models.Skill", b =>
@@ -104,6 +153,26 @@ namespace RPGWebAPI.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Skills");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Damage = 30,
+                            Name = "Fireball"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Damage = 20,
+                            Name = "Frenzy"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Damage = 50,
+                            Name = "Blizzard"
+                        });
                 });
 
             modelBuilder.Entity("RPGWebAPI.Models.User", b =>
@@ -122,6 +191,12 @@ namespace RPGWebAPI.Migrations
                         .IsRequired()
                         .HasColumnType("varbinary(max)");
 
+                    b.Property<string>("Role")
+                        .IsRequired()
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("nvarchar(max)")
+                        .HasDefaultValue("Player");
+
                     b.Property<string>("Username")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -129,6 +204,22 @@ namespace RPGWebAPI.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            PasswordHash = new byte[] { 133, 235, 82, 41, 56, 128, 254, 145, 10, 141, 0, 95, 99, 15, 241, 73, 203, 109, 139, 165, 244, 101, 163, 201, 17, 214, 52, 160, 25, 230, 240, 206, 42, 160, 147, 31, 226, 245, 86, 19, 230, 45, 175, 19, 90, 5, 45, 217, 227, 99, 250, 49, 130, 18, 253, 153, 193, 124, 57, 149, 181, 216, 61, 230 },
+                            PasswordSalt = new byte[] { 44, 192, 0, 104, 227, 134, 182, 101, 97, 14, 75, 163, 149, 139, 84, 170, 235, 76, 194, 9, 190, 186, 55, 15, 41, 93, 163, 102, 81, 151, 3, 57, 53, 189, 76, 189, 157, 64, 15, 150, 125, 216, 11, 74, 66, 243, 39, 116, 109, 66, 102, 61, 2, 46, 166, 108, 132, 217, 189, 0, 60, 190, 109, 148, 115, 115, 111, 172, 92, 87, 36, 27, 151, 161, 215, 46, 180, 65, 247, 54, 109, 48, 67, 94, 16, 232, 184, 99, 117, 138, 116, 172, 226, 236, 151, 255, 130, 117, 105, 144, 245, 215, 226, 175, 142, 135, 245, 7, 11, 181, 71, 18, 112, 58, 160, 68, 148, 192, 126, 6, 101, 222, 180, 174, 88, 205, 182, 90 },
+                            Username = "User1"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            PasswordHash = new byte[] { 133, 235, 82, 41, 56, 128, 254, 145, 10, 141, 0, 95, 99, 15, 241, 73, 203, 109, 139, 165, 244, 101, 163, 201, 17, 214, 52, 160, 25, 230, 240, 206, 42, 160, 147, 31, 226, 245, 86, 19, 230, 45, 175, 19, 90, 5, 45, 217, 227, 99, 250, 49, 130, 18, 253, 153, 193, 124, 57, 149, 181, 216, 61, 230 },
+                            PasswordSalt = new byte[] { 44, 192, 0, 104, 227, 134, 182, 101, 97, 14, 75, 163, 149, 139, 84, 170, 235, 76, 194, 9, 190, 186, 55, 15, 41, 93, 163, 102, 81, 151, 3, 57, 53, 189, 76, 189, 157, 64, 15, 150, 125, 216, 11, 74, 66, 243, 39, 116, 109, 66, 102, 61, 2, 46, 166, 108, 132, 217, 189, 0, 60, 190, 109, 148, 115, 115, 111, 172, 92, 87, 36, 27, 151, 161, 215, 46, 180, 65, 247, 54, 109, 48, 67, 94, 16, 232, 184, 99, 117, 138, 116, 172, 226, 236, 151, 255, 130, 117, 105, 144, 245, 215, 226, 175, 142, 135, 245, 7, 11, 181, 71, 18, 112, 58, 160, 68, 148, 192, 126, 6, 101, 222, 180, 174, 88, 205, 182, 90 },
+                            Username = "User2"
+                        });
                 });
 
             modelBuilder.Entity("RPGWebAPI.Models.Weapon", b =>
@@ -155,6 +246,22 @@ namespace RPGWebAPI.Migrations
                         .IsUnique();
 
                     b.ToTable("Weapons");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CharacterId = new Guid("57a679bb-ec69-4a54-b19a-f245e3f2b48a"),
+                            Damage = 20,
+                            Name = "The Master Sword"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CharacterId = new Guid("ecd37a20-5620-41ec-afd6-cf09ec25d8cc"),
+                            Damage = 5,
+                            Name = "Crystal Wand"
+                        });
                 });
 
             modelBuilder.Entity("RPGWebAPI.Models.Character", b =>
